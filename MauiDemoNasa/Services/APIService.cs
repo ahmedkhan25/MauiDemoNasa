@@ -24,10 +24,11 @@ namespace MauiDemoNasa.Services
              
        }
 
-        public async Task<NasaPicMetadata> GetData()
+        public async Task<NasaPicMetadata> GetData(DateTime date)
         {
-            var apiURL = NASA_APOD_API_URL + NASA_APOD_API_KEY;
-           return await client.GetFromJsonAsync<NasaPicMetadata>(apiURL);
+            var apiURL = NASA_APOD_API_URL + NASA_APOD_API_KEY+ "&date=" +date.ToString("yyyy-MM-dd");
+            var x = await client.GetFromJsonAsync<NasaPicMetadata>(apiURL);
+            return x;
 
         }
 

@@ -8,8 +8,9 @@ using System.Threading.Tasks;
 namespace MauiDemoNasa.Models
 {
     //C# Class to hold APOD pic of Day Metadeta retreived as JSON from NASA API:
-    public class NasaPicMetadata: INotifyPropertyChanged
+    public class NasaPicMetadata
     {
+         
         public string copyright { get; set; }
         public string date { get; set; }
         public string explanation { get; set; }
@@ -19,7 +20,6 @@ namespace MauiDemoNasa.Models
         public string title { get; set; }
         public string url { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-         
+
     }
 }

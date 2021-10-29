@@ -1,10 +1,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiDemoNasa.MainPage"
-             BackgroundColor="{DynamicResource SecondaryColor}">
+             BackgroundColor="{DynamicResource SecondaryColor}"
+             >
 
     <ScrollView Padding="{OnPlatform iOS='30,60,30,30', Default='30'}">
-        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,*">
+        <Grid RowSpacing="25" RowDefinitions="Auto,Auto,Auto,Auto,Auto,*"   >
 
             <Label 
                 Text="NASA PIC OF THE DAY"
@@ -22,28 +23,44 @@
                 HorizontalOptions="Center" />
 
             <Label 
-                Text="Current count: 0"
+                Text="{Binding Date}"
                 Grid.Row="2"
+                FontSize="18"
+                FontAttributes="Bold"
+                x:Name="DateLabel"
+                HorizontalOptions="Center" />
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="3">
+            <Button 
+                Text="-1 Day"
+                FontAttributes="Bold"
+                
+                Command="{Binding GoBackOneDayCommand}"
+                HorizontalOptions="Center" />
+
+
+            <Button 
+                Margin="5,0,0,0"
+                Text="TODAY"
+                FontAttributes="Bold"
+                Command="{Binding TodayClickedCommand}"
+                HorizontalOptions="Center" />
+            </StackLayout>
+
+            <Image Grid.Row="4"  
+                Source="{Binding ImageData.url, Mode=OneWay}"
+                 
+                WidthRequest="350"
+                HeightRequest="310"
+                HorizontalOptions="Center" />
+             
+            <Label 
+                Text="{Binding ImageData.explanation}"
+               Grid.Row="5"
                 FontSize="18"
                 FontAttributes="Bold"
                 x:Name="CounterLabel"
                 HorizontalOptions="Center" />
-
-            <Button 
-                Text="Click me"
-                FontAttributes="Bold"
-                Grid.Row="3"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
-
-            <Image Grid.Row="4"
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                WidthRequest="250"
-                HeightRequest="310"
-                HorizontalOptions="Center" />
-
+          
         </Grid>
     </ScrollView>
 </ContentPage>

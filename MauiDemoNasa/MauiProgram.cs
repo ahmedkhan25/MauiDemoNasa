@@ -22,6 +22,7 @@ namespace MauiDemoNasa
 
             var services = builder.Services;
             services.AddSingleton<IAPIService, APIService>();
+            services.AddSingleton<MainPage>();
             services.AddSingleton<MainPageViewModel>();
 
             return builder.Build();
