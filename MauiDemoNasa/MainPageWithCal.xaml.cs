@@ -5,12 +5,12 @@ using System;
 
 namespace MauiDemoNasa
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPageWithCal : ContentPage
     {
         int count = 0;
         MainPageViewModel vm;
 
-        public MainPage(MainPageViewModel viewModel)
+        public MainPageWithCal(MainPageViewModel viewModel)
         {
             InitializeComponent();
 
@@ -24,7 +24,11 @@ namespace MauiDemoNasa
         {
             vm.GetData();
         }
-
+        private void Handle_DateSelected(object sender, DateChangedEventArgs e)
+        {
+           
+            vm.GetData();
+        }
 
 
     }

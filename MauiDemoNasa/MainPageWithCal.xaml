@@ -1,7 +1,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:MauiDemoNasa.ViewModels"
-             x:Class="MauiDemoNasa.MainPage"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             x:Class="MauiDemoNasa.MainPageWithCal"
              BackgroundColor="{DynamicResource SecondaryColor}"
              x:DataType="local:MainPageViewModel"
              >
@@ -15,7 +16,6 @@
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="22"
                 HorizontalOptions="Center" />
-
             <Label 
                 Text="Demo of .NET Multi-platform App UI"
                 Grid.Row="1"
@@ -24,24 +24,27 @@
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Label 
-                Text="{Binding Date}"
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="2">
+
+
+                <Label 
+                Text="Choose Date:"
                 Grid.Row="2"
-                FontSize="18"
+                FontSize="12"
                 FontAttributes="Bold"
                 x:Name="DateLabel"
                 HorizontalOptions="Center" />
+
+                <DatePicker  x:Name="datePicker" Margin="0,-12,0,0" Date="{Binding Date}" MaximumDate="{x:Static system:DateTime.Now}"   DateSelected="Handle_DateSelected"/>
+            </StackLayout>
+
             <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Row="3">
-            <Button 
-                Text="-1 Day"
-                FontAttributes="Bold"
-                
-                Command="{Binding GoBackOneDayCommand}"
-                HorizontalOptions="Center" />
+
+              
 
 
-            <Button 
-                Margin="5,0,0,0"
+                <Button 
+                Margin="5,0,0,-20"
                 Text="TODAY"
                 FontAttributes="Bold"
                 Command="{Binding TodayClickedCommand}"
@@ -51,10 +54,10 @@
             <Image Grid.Row="4"  
                 Source="{Binding ImageData.url, Mode=OneWay}"
                  
-                WidthRequest="350"
-                HeightRequest="310"
+                WidthRequest="450"
+                HeightRequest="450"
                 HorizontalOptions="Center" />
-             
+
             <Label 
                 Text="{Binding ImageData.explanation}"
                Grid.Row="5"
